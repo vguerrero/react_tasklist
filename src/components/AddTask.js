@@ -1,7 +1,7 @@
 import "./AddTask.css";
 import { useState } from "react";
 
-export const AddTask = () => {
+export const AddTask = ({tasks, setTasks}) => {
     const [taskValue, setTaskValue] = useState("");
     const [progress, setProgress] = useState(false);
 
@@ -15,9 +15,10 @@ export const AddTask = () => {
         const task = {
             id: Math.floor(Math.random() * 10000),
             name:taskValue,
-            complete:Boolean(progress)
+            completed:Boolean(progress)
         }
         console.log(task);
+        setTasks([...tasks,task]);//destructuring usage
         handleReset();
     }
 
